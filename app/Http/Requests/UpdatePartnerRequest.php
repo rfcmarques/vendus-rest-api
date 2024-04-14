@@ -27,14 +27,16 @@ class UpdatePartnerRequest extends FormRequest
                 'max:255'
             ],
             'vat' => [
-                'between:100000000,999999',
-                'unique:partners,vat,' . $this->partner->id
+                'digits:9',
+                'unique:partners,vat'
             ],
             'email' => [
                 'email',
-                'unique:partners,email,' . $this->partner->id
+                'unique:partners,email'
             ],
-            'address' => 'max:255',
+            'address' => [
+                'max:255'
+            ],
             'comission' => [
                 'between:0,100',
                 'decimal:0,2'
