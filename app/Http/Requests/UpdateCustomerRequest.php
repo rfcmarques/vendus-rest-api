@@ -27,14 +27,19 @@ class UpdateCustomerRequest extends FormRequest
                 'max:255'
             ],
             'vat' => [
-                'between:100000000,999999',
+                'digits:9',
                 'unique:customers,vat,' . $this->partner->id
             ],
             'email' => [
                 'email',
                 'unique:customers,email,' . $this->partner->id
             ],
-            'address' => 'max:255',
+            'address' => [
+                'max:255'
+            ],
+            'partner_id' => [
+                'exists:partners,id'
+            ],
             'discount' => [
                 'between:0,100',
                 'decimal:0,2'

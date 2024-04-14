@@ -29,7 +29,7 @@ class StoreCustomerRequest extends FormRequest
             ],
             'vat' => [
                 'required',
-                'between:100000000,999999',
+                'digits:9',
                 'unique:customers,vat'
             ],
             'email' => [
@@ -40,6 +40,10 @@ class StoreCustomerRequest extends FormRequest
             'address' => [
                 'required',
                 'max:255'
+            ],
+            'partner_id' => [
+                'required',
+                'exists:partners,id'
             ],
             'discount' => [
                 'required',
