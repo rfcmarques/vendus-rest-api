@@ -6,6 +6,7 @@ use App\Http\Requests\StoreSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use App\Http\Resources\SupplierResource;
 use App\Models\Supplier;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class SupplierController extends Controller
 {
@@ -14,7 +15,17 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return SupplierResource::collection(Supplier::all());
+        $suppliers = QueryBuilder::for(Supplier::class)
+            ->allowedFilters([
+                'name',
+                'email',
+                'max_due_days',
+                'contract_file'
+            ])
+            ->paginate()
+            ->appends(request()->query());
+
+        return SupplierResource::collection($suppliers);
     }
 
     /**
