@@ -6,6 +6,7 @@ use App\Http\Requests\StoreSupplierRequest;
 use App\Http\Requests\UpdateSupplierRequest;
 use App\Http\Resources\SupplierResource;
 use App\Models\Supplier;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class SupplierController extends Controller
@@ -18,7 +19,7 @@ class SupplierController extends Controller
         $suppliers = QueryBuilder::for(Supplier::class)
             ->allowedFilters([
                 'name',
-                'email',
+                AllowedFilter::exact('email'),
                 'max_due_days',
                 'contract_file'
             ])

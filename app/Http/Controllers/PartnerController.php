@@ -6,6 +6,7 @@ use App\Http\Requests\StorePartnerRequest;
 use App\Http\Requests\UpdatePartnerRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class PartnerController extends Controller
@@ -18,7 +19,7 @@ class PartnerController extends Controller
         $partners = QueryBuilder::for(Partner::class)
             ->allowedFilters([
                 'name',
-                'email',
+                AllowedFilter::exact('email'),
                 'comission'
             ])
             ->paginate()
