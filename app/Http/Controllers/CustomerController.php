@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
+use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CustomerController extends Controller
@@ -18,8 +19,8 @@ class CustomerController extends Controller
         $customers = QueryBuilder::for(Customer::class)
             ->allowedFilters([
                 'name',
-                'email',
-                'partner_id',
+                AllowedFilter::exact('email'),
+                AllowedFilter::exact('partner_id'),
                 'discount'
             ])
             ->paginate()
