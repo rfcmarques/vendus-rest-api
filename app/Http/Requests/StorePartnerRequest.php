@@ -23,17 +23,19 @@ class StorePartnerRequest extends FormRequest
     {
         return [
             'name' => [
-                'required', 'string', 'max:255'
+                'required',
+                'string',
+                'max:255'
             ],
             'vat' => [
                 'required',
                 'between:100000000,999999',
-                'unique:partners'
+                'unique:partners,vat'
             ],
             'email' => [
                 'required',
                 'email',
-                'unique:partners'
+                'unique:partners,email'
             ],
             'address' => [
                 'required',
