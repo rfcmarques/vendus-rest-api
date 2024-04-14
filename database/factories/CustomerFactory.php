@@ -6,9 +6,9 @@ use App\Models\Partner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Supplier>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
  */
-class SupplierFactory extends Factory
+class CustomerFactory extends Factory
 {
     /**
      * Define the model's default state.
