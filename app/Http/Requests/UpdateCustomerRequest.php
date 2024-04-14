@@ -28,11 +28,11 @@ class UpdateCustomerRequest extends FormRequest
             ],
             'vat' => [
                 'digits:9',
-                'unique:customers,vat,' . $this->partner->id
+                'unique:customers,vat'
             ],
             'email' => [
                 'email',
-                'unique:customers,email,' . $this->partner->id
+                'unique:customers,email'
             ],
             'address' => [
                 'max:255'
