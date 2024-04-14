@@ -8,4 +8,4 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::resource('partners', PartnerController::class)->except('create', 'edit');
+Route::apiResource('partners', PartnerController::class);
