@@ -18,8 +18,8 @@ class PartnerFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
-            'vat' => $this->faker->numberBetween(100000000, 999999999),
-            'email' => $this->faker->companyEmail(),
+            'vat' => $this->faker->unique()->numberBetween(100000000, 999999999),
+            'email' => $this->faker->unique()->companyEmail(),
             'address' => $this->faker->address(),
             'comission' => $this->faker->randomFloat(2, 0, 100),
         ];
