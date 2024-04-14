@@ -29,7 +29,7 @@ class StorePartnerRequest extends FormRequest
             ],
             'vat' => [
                 'required',
-                'between:100000000,999999',
+                'digits:9',
                 'unique:partners,vat'
             ],
             'email' => [
