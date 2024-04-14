@@ -6,6 +6,7 @@ use App\Http\Requests\StorePartnerRequest;
 use App\Http\Requests\UpdatePartnerRequest;
 use App\Http\Resources\PartnerResource;
 use App\Models\Partner;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PartnerController extends Controller
 {
@@ -14,7 +15,16 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        return PartnerResource::collection(Partner::all());
+        $partners = QueryBuilder::for(Partner::class)
+            ->allowedFilters([
+                'name',
+                'email',
+                'comission'
+            ])
+            ->paginate()
+            ->appends(request()->query()); // é acrescentado para nos links da página ter a query na mesma
+
+        return PartnerResource::collection($partners);
     }
 
 
