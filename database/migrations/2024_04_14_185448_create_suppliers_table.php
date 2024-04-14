@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('vat')->unique();
             $table->string('email')->unique();
             $table->string('address');
-            $table->foreignIdFor(Partner::class);
+            $table->foreignIdFor(Partner::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->float('discount');
             $table->timestamps();
         });
