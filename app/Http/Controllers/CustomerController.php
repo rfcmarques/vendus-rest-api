@@ -190,7 +190,7 @@ class CustomerController extends Controller
 
     /**
      * @OA\Put(
-     *      path="/customers/{id}",
+     *      path="/api/customers/{id}",
      *      operationId="updateCustomer",
      *      tags={"Customers"},
      *      summary="Update a customer",
@@ -279,7 +279,7 @@ class CustomerController extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/customers/{id}",
+     *      path="/api/customers/{id}",
      *      operationId="deleteCustomer",
      *      tags={"Customers"},
      *      summary="Delete a customer",
