@@ -146,7 +146,7 @@ class SupplierController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/api/api/suppliers/{id}",
+     *      path="/api/suppliers/{id}",
      *      operationId="getSupplierById",
      *      tags={"Suppliers"},
      *      summary="Get a single supplier",
@@ -193,7 +193,7 @@ class SupplierController extends Controller
 
     /**
      * @OA\Put(
-     *      path="/api/api/suppliers/{id}",
+     *      path="/api/suppliers/{id}",
      *      operationId="updateSupplier",
      *      tags={"Suppliers"},
      *      summary="Update a supplier",
@@ -250,7 +250,7 @@ class SupplierController extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/api/suppliers/{id}",
+     *      path="/api/suppliers/{id}",
      *      operationId="deleteSupplier",
      *      tags={"Suppliers"},
      *      summary="Delete a supplier",
