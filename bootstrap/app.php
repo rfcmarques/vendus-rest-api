@@ -21,11 +21,15 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($request->is('api/*')) {
                 return response()->json(['message' => 'Object not found'], 404);
             }
+
+            if ($request->expectsJson()) {
+                return response()->json(['message' => 'Object not found'], 404);
+            }
         });
 
         $exceptions->renderable(function (InvalidFilterQuery $e, $request) {
             if ($request->is('api/*')) {
-                return response()->json(['message' => $e->getMessage()], 400);
+                return response()->json(['message' => 'That filter is not valid'], 400);
             }
         });
     })->create();
