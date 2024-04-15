@@ -10,7 +10,7 @@ use OpenApi\Annotations as OA;
  * @OA\Schema(
  *     schema="Supplier",
  *     type="object",
- *     required={"id", "name", "vat", "email", "max_due_days", "contract_file"},
+ *     required={"id", "name", "vat", "email", "address", "max_due_days", "contract_file"},
  *     @OA\Property(
  *         property="id",
  *         type="integer",
