@@ -1,0 +1,431 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Vendus REST API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/suppliers": {
+            "get": {
+                "tags": [
+                    "Suppliers"
+                ],
+                "summary": "Get list of suppliers",
+                "description": "Returns paginated list of suppliers with navigation links.",
+                "operationId": "getSuppliers",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Filter suppliers by name",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Filter suppliers by exact email",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "max_due_days",
+                        "in": "query",
+                        "description": "Filter suppliers by maximum due days",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "contract_file",
+                        "in": "query",
+                        "description": "Filter suppliers by contract file presence",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Supplier"
+                                            }
+                                        },
+                                        "links": {
+                                            "properties": {
+                                                "first": {
+                                                    "description": "Link to the first page",
+                                                    "type": "string"
+                                                },
+                                                "last": {
+                                                    "description": "Link to the last page",
+                                                    "type": "string"
+                                                },
+                                                "prev": {
+                                                    "description": "Link to the previous page",
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "next": {
+                                                    "description": "Link to the next page",
+                                                    "type": "string",
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "properties": {
+                                                "current_page": {
+                                                    "description": "Current page number",
+                                                    "type": "integer"
+                                                },
+                                                "from": {
+                                                    "description": "First item number on the current page",
+                                                    "type": "integer"
+                                                },
+                                                "last_page": {
+                                                    "description": "Last page number",
+                                                    "type": "integer"
+                                                },
+                                                "path": {
+                                                    "description": "Base path for the paginated links",
+                                                    "type": "string"
+                                                },
+                                                "per_page": {
+                                                    "description": "Number of items per page",
+                                                    "type": "integer"
+                                                },
+                                                "to": {
+                                                    "description": "Last item number on the current page",
+                                                    "type": "integer"
+                                                },
+                                                "total": {
+                                                    "description": "Total items available",
+                                                    "type": "integer"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Suppliers"
+                ],
+                "summary": "Create a new supplier",
+                "description": "Creates a new supplier and returns the newly created supplier.",
+                "operationId": "addSupplier",
+                "requestBody": {
+                    "description": "Supplier data to create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "max_due_days"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of the supplier",
+                                        "type": "string",
+                                        "example": "XPTO"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the supplier",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "xpto@email.com"
+                                    },
+                                    "vat": {
+                                        "description": "VAT number of the supplier",
+                                        "type": "string",
+                                        "example": "123456789"
+                                    },
+                                    "max_due_days": {
+                                        "description": "Maximum number of due days allowed",
+                                        "type": "integer",
+                                        "example": 30
+                                    },
+                                    "contract_file": {
+                                        "description": "Path to the contract file associated with the supplier",
+                                        "type": "string",
+                                        "example": "/files/contracts/Supplier_Contract.pdf"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Supplier created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Supplier"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        },
+        "/api/api/suppliers/{id}": {
+            "get": {
+                "tags": [
+                    "Suppliers"
+                ],
+                "summary": "Get a single supplier",
+                "description": "Returns a single supplier by ID",
+                "operationId": "getSupplierById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the supplier to return",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Supplier"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Supplier not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Object not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Suppliers"
+                ],
+                "summary": "Update a supplier",
+                "description": "Updates a supplier identified by ID and returns the updated supplier.",
+                "operationId": "updateSupplier",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the supplier to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Supplier data to update",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Name of the supplier",
+                                        "type": "string",
+                                        "example": "XPTO"
+                                    },
+                                    "email": {
+                                        "description": "Email address of the supplier",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "xpto@email.com"
+                                    },
+                                    "vat": {
+                                        "description": "VAT number of the supplier",
+                                        "type": "string",
+                                        "example": "123456789"
+                                    },
+                                    "max_due_days": {
+                                        "description": "Maximum number of due days allowed",
+                                        "type": "integer",
+                                        "example": 30
+                                    },
+                                    "contract_file": {
+                                        "description": "Path to the contract file associated with the supplier",
+                                        "type": "string",
+                                        "example": "/files/contracts/Supplier_Contract.pdf"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Supplier updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Supplier"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Supplier not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Object not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Suppliers"
+                ],
+                "summary": "Delete a supplier",
+                "description": "Deletes a specific supplier by ID and returns no content.",
+                "operationId": "deleteSupplier",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the supplier to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content (successful deletion)"
+                    },
+                    "404": {
+                        "description": "Supplier not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Object not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Supplier": {
+                "required": [
+                    "id",
+                    "name",
+                    "vat",
+                    "email",
+                    "max_due_days",
+                    "contract_file"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "The unique identifier of the supplier",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "The name of the supplier",
+                        "type": "string"
+                    },
+                    "vat": {
+                        "description": "The VAT of the supplier",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "The email address of the supplier",
+                        "type": "string"
+                    },
+                    "max_due_days": {
+                        "description": "The maximum number of due days allowed for the supplier",
+                        "type": "integer"
+                    },
+                    "contract_file": {
+                        "description": "The file path for the contract file associated with the supplier",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
