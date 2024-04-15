@@ -33,6 +33,11 @@ use OpenApi\Annotations as OA;
  *         description="The email address of the supplier"
  *     ),
  *     @OA\Property(
+ *         property="address",
+ *         type="string",
+ *         description="The address of the supplier"
+ *     ),
+ *     @OA\Property(
  *         property="max_due_days",
  *         type="integer",
  *         description="The maximum number of due days allowed for the supplier"
