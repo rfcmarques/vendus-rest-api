@@ -54,7 +54,35 @@ class CustomerController extends Controller
      *              @OA\Property(
      *                  property="data",
      *                  type="array",
-     *                  @OA\Items(ref="#/components/schemas/Customer")
+     *                  @OA\Items(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="XPTO",
+     *                          description="Full name of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string",
+     *                          format="email",
+     *                          example="xpto@email.com",
+     *                          description="Email address of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="partner_id",
+     *                          type="integer",
+     *                          example=1,
+     *                          description="Identifier for the partner associated with the customer",
+     *                          format="int64"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="discount",
+     *                          type="number",
+     *                          format="float",
+     *                          example=10.2,
+     *                          description="Discount rate applicable to the customer"
+     *                      ),
+     *                  )
      *              ),
      *              @OA\Property(
      *                  property="links",
@@ -117,19 +145,53 @@ class CustomerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Customer"
+     *                  type="array",
+     *                  @OA\JsonContent(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="XPTO",
+     *                          description="Full name of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string",
+     *                          format="email",
+     *                          example="xpto@email.com",
+     *                          description="Email address of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="partner_id",
+     *                          type="integer",
+     *                          example=1,
+     *                          description="Identifier for the partner associated with the customer",
+     *                          format="int64"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="discount",
+     *                          type="number",
+     *                          format="float",
+     *                          example=10.2,
+     *                          description="Discount rate applicable to the customer"
+     *                      ),
+     *                  )
      *              )
      *          )
      *      ),
      *      @OA\Response(
-     *          response=400,
+     *          response=422,
      *          description="Bad request",
      *          @OA\JsonContent(
      *              type="object",
      *              @OA\Property(
      *                  property="message",
      *                  type="string",
-     *                  example="Invalid input data"
+     *                  example="Error messsage"
+     *              ),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="object",
+     *                  example="Object with all the errors by field",
      *              )
      *          )
      *      ),
@@ -165,7 +227,36 @@ class CustomerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Customer"
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="XPTO",
+     *                          description="Full name of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string",
+     *                          format="email",
+     *                          example="xpto@email.com",
+     *                          description="Email address of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="partner_id",
+     *                          type="integer",
+     *                          example=1,
+     *                          description="Identifier for the partner associated with the customer",
+     *                          format="int64"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="discount",
+     *                          type="number",
+     *                          format="float",
+     *                          example=10.2,
+     *                          description="Discount rate applicable to the customer"
+     *                      ),
+     *                  )
      *              )
      *          )
      *      ),
@@ -216,19 +307,36 @@ class CustomerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Customer"
-     *              )
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad request",
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(
-     *                  property="message",
-     *                  type="string",
-     *                  example="Invalid input data"
+     *                  type="array",
+     *                  @OA\Items(
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string",
+     *                          example="XPTO",
+     *                          description="Full name of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string",
+     *                          format="email",
+     *                          example="xpto@email.com",
+     *                          description="Email address of the customer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="partner_id",
+     *                          type="integer",
+     *                          example=1,
+     *                          description="Identifier for the partner associated with the customer",
+     *                          format="int64"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="discount",
+     *                          type="number",
+     *                          format="float",
+     *                          example=10.2,
+     *                          description="Discount rate applicable to the customer"
+     *                      ),
+     *                  )
      *              )
      *          )
      *      ),
@@ -246,28 +354,21 @@ class CustomerController extends Controller
      *      ),
      *      @OA\Response(
      *          response=422,
-     *          description="Validation error",
+     *          description="Bad request",
      *          @OA\JsonContent(
      *              type="object",
      *              @OA\Property(
      *                  property="message",
      *                  type="string",
-     *                  example="The input has validation errors",
-     *                  description="General error message"
+     *                  example="Error messsage"
      *              ),
      *              @OA\Property(
      *                  property="errors",
      *                  type="object",
-     *                  additionalProperties={
-     *                      @OA\Property(
-     *                          type="array",
-     *                          @OA\Items(type="string")
-     *                      )
-     *                  },
-     *                  description="Detailed list of validation errors per field"
+     *                  example="Object with all the errors by field",
      *              )
      *          )
-     *      )
+     *      ),
      * )
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)

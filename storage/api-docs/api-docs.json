@@ -62,7 +62,32 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "#/components/schemas/Customer"
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "Full name of the customer",
+                                                        "type": "string",
+                                                        "example": "XPTO"
+                                                    },
+                                                    "email": {
+                                                        "description": "Email address of the customer",
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "example": "xpto@email.com"
+                                                    },
+                                                    "partner_id": {
+                                                        "description": "Identifier for the partner associated with the customer",
+                                                        "type": "integer",
+                                                        "format": "int64",
+                                                        "example": 1
+                                                    },
+                                                    "discount": {
+                                                        "description": "Discount rate applicable to the customer",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 10.2
+                                                    }
+                                                },
+                                                "type": "object"
                                             }
                                         },
                                         "links": {
@@ -158,7 +183,35 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/Customer"
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "Full name of the customer",
+                                                        "type": "string",
+                                                        "example": "XPTO"
+                                                    },
+                                                    "email": {
+                                                        "description": "Email address of the customer",
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "example": "xpto@email.com"
+                                                    },
+                                                    "partner_id": {
+                                                        "description": "Identifier for the partner associated with the customer",
+                                                        "type": "integer",
+                                                        "format": "int64",
+                                                        "example": 1
+                                                    },
+                                                    "discount": {
+                                                        "description": "Discount rate applicable to the customer",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 10.2
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -166,7 +219,7 @@
                             }
                         }
                     },
-                    "400": {
+                    "422": {
                         "description": "Bad request",
                         "content": {
                             "application/json": {
@@ -174,7 +227,11 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Invalid input data"
+                                            "example": "Error messsage"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": "Object with all the errors by field"
                                         }
                                     },
                                     "type": "object"
@@ -212,7 +269,35 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/Customer"
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "Full name of the customer",
+                                                        "type": "string",
+                                                        "example": "XPTO"
+                                                    },
+                                                    "email": {
+                                                        "description": "Email address of the customer",
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "example": "xpto@email.com"
+                                                    },
+                                                    "partner_id": {
+                                                        "description": "Identifier for the partner associated with the customer",
+                                                        "type": "integer",
+                                                        "format": "int64",
+                                                        "example": 1
+                                                    },
+                                                    "discount": {
+                                                        "description": "Discount rate applicable to the customer",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 10.2
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -275,23 +360,35 @@
                                 "schema": {
                                     "properties": {
                                         "data": {
-                                            "$ref": "#/components/schemas/Customer"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Invalid input data"
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "Full name of the customer",
+                                                        "type": "string",
+                                                        "example": "XPTO"
+                                                    },
+                                                    "email": {
+                                                        "description": "Email address of the customer",
+                                                        "type": "string",
+                                                        "format": "email",
+                                                        "example": "xpto@email.com"
+                                                    },
+                                                    "partner_id": {
+                                                        "description": "Identifier for the partner associated with the customer",
+                                                        "type": "integer",
+                                                        "format": "int64",
+                                                        "example": 1
+                                                    },
+                                                    "discount": {
+                                                        "description": "Discount rate applicable to the customer",
+                                                        "type": "number",
+                                                        "format": "float",
+                                                        "example": 10.2
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -316,28 +413,18 @@
                         }
                     },
                     "422": {
-                        "description": "Validation error",
+                        "description": "Bad request",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
                                         "message": {
-                                            "description": "General error message",
                                             "type": "string",
-                                            "example": "The input has validation errors"
+                                            "example": "Error messsage"
                                         },
                                         "errors": {
-                                            "description": "Detailed list of validation errors per field",
                                             "type": "object",
-                                            "additionalProperties": [
-                                                {
-                                                    "type": "array",
-                                                    "items": {
-                                                        "type": "string"
-                                                    },
-                                                    "property": null
-                                                }
-                                            ]
+                                            "example": "Object with all the errors by field"
                                         }
                                     },
                                     "type": "object"
