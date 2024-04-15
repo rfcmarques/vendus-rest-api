@@ -110,19 +110,23 @@ class PartnerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Partner"
-     *              )
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad request",
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(
-     *                  property="message",
-     *                  type="string",
-     *                  example="Invalid input data"
+     *                  @OA\Property(
+     *                      property="name",
+     *                      type="string",
+     *                      description="Full name of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                      format="email",
+     *                      description="Email address of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="commission",
+     *                      type="number",
+     *                      format="float",
+     *                      description="Commission rate for the partner"
+     *                  )
      *              )
      *          )
      *      ),
@@ -134,22 +138,15 @@ class PartnerController extends Controller
      *              @OA\Property(
      *                  property="message",
      *                  type="string",
-     *                  example="Validation errors in your request",
-     *                  description="Descriptive message about the validation errors"
+     *                  example="Error messsage"
      *              ),
      *              @OA\Property(
      *                  property="errors",
      *                  type="object",
-     *                  additionalProperties={
-     *                      @OA\Property(
-     *                          type="array",
-     *                          @OA\Items(type="string")
-     *                      )
-     *                  },
-     *                  description="Detailed validation errors"
+     *                  example="Object with all the errors by field",
      *              )
      *          )
-     *      )
+     *      ),
      * )
      */
     public function store(StorePartnerRequest $request)
@@ -182,7 +179,23 @@ class PartnerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Partner"
+     *                  @OA\Property(
+     *                      property="name",
+     *                      type="string",
+     *                      description="Full name of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                      format="email",
+     *                      description="Email address of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="commission",
+     *                      type="number",
+     *                      format="float",
+     *                      description="Commission rate for the partner"
+     *                  )
      *              )
      *          )
      *      ),
@@ -233,19 +246,23 @@ class PartnerController extends Controller
      *              type="object",
      *              @OA\Property(
      *                  property="data",
-     *                  ref="#/components/schemas/Partner"
-     *              )
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad request",
-     *          @OA\JsonContent(
-     *              type="object",
-     *              @OA\Property(
-     *                  property="message",
-     *                  type="string",
-     *                  example="Invalid input data"
+     *                  @OA\Property(
+     *                      property="name",
+     *                      type="string",
+     *                      description="Full name of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="email",
+     *                      type="string",
+     *                      format="email",
+     *                      description="Email address of the partner"
+     *                  ),
+     *                  @OA\Property(
+     *                      property="commission",
+     *                      type="number",
+     *                      format="float",
+     *                      description="Commission rate for the partner"
+     *                  )
      *              )
      *          )
      *      ),
@@ -269,22 +286,15 @@ class PartnerController extends Controller
      *              @OA\Property(
      *                  property="message",
      *                  type="string",
-     *                  example="Validation errors in your request",
-     *                  description="Descriptive message about the validation errors"
+     *                  example="Error messsage"
      *              ),
      *              @OA\Property(
      *                  property="errors",
      *                  type="object",
-     *                  additionalProperties={
-     *                      @OA\Property(
-     *                          type="array",
-     *                          @OA\Items(type="string")
-     *                      )
-     *                  },
-     *                  description="Detailed list of validation errors per field"
+     *                  example="Object with all the errors by field",
      *              )
      *          )
-     *      )
+     *      ),
      * )
      */
     public function update(UpdatePartnerRequest $request, Partner $partner)

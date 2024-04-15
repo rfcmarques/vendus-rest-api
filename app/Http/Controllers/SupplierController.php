@@ -129,12 +129,47 @@ class SupplierController extends Controller
      *      @OA\Response(
      *          response=201,
      *          description="Supplier created successfully",
-     *          @OA\JsonContent(ref="#/components/schemas/Supplier")
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(
+     *                  property="name",
+     *                  type="string",
+     *                  description="The name of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="email",
+     *                  type="string",
+     *                  description="The email address of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="max_due_days",
+     *                  type="integer",
+     *                  description="The maximum number of due days allowed for the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="contract_file",
+     *                  type="string",
+     *                  description="The file path for the contract file associated with the supplier"
+     *              )
+     *          )
      *      ),
      *      @OA\Response(
-     *          response=400,
-     *          description="Bad request"
-     *      )
+     *          response=422,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(
+     *                  property="message",
+     *                  type="string",
+     *                  example="Error messsage"
+     *              ),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="object",
+     *                  example="Object with all the errors by field",
+     *              )
+     *          )
+     *      ),
      * )
      */
     public function store(StoreSupplierRequest $request)
@@ -166,9 +201,24 @@ class SupplierController extends Controller
      *          @OA\JsonContent(
      *              type="object",
      *              @OA\Property(
-     *                  property="data",
-     *                  type="array",
-     *                  @OA\Items(ref="#/components/schemas/Supplier")
+     *                  property="name",
+     *                  type="string",
+     *                  description="The name of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="email",
+     *                  type="string",
+     *                  description="The email address of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="max_due_days",
+     *                  type="integer",
+     *                  description="The maximum number of due days allowed for the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="contract_file",
+     *                  type="string",
+     *                  description="The file path for the contract file associated with the supplier"
      *              )
      *          )
      *      ),
@@ -221,11 +271,29 @@ class SupplierController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="Supplier updated successfully",
-     *          @OA\JsonContent(ref="#/components/schemas/Supplier")
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="Bad request"
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(
+     *                  property="name",
+     *                  type="string",
+     *                  description="The name of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="email",
+     *                  type="string",
+     *                  description="The email address of the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="max_due_days",
+     *                  type="integer",
+     *                  description="The maximum number of due days allowed for the supplier"
+     *              ),
+     *              @OA\Property(
+     *                  property="contract_file",
+     *                  type="string",
+     *                  description="The file path for the contract file associated with the supplier"
+     *              )
+     *          )
      *      ),
      *      @OA\Response(
      *          response=404,
@@ -238,7 +306,24 @@ class SupplierController extends Controller
      *                  example="Object not found"
      *              )
      *          )
-     *      )
+     *      ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Validation error",
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(
+     *                  property="message",
+     *                  type="string",
+     *                  example="Error messsage"
+     *              ),
+     *              @OA\Property(
+     *                  property="errors",
+     *                  type="object",
+     *                  example="Object with all the errors by field",
+     *              )
+     *          )
+     *      ),
      * )
      */
     public function update(UpdateSupplierRequest $request, Supplier $supplier)

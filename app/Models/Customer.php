@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  *     description="Schema for Customer data",
  *     required={"name", "vat", "email", "address", "partner_id", "discount"},
  *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         format="int64",
+ *         description="The unique identifier of the customer"
+ *     ),
+ *     @OA\Property(
  *         property="name",
  *         type="string",
  *         description="Full name of the customer"

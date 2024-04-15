@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Model;
  *     description="Schema for Partner data",
  *     required={"name", "vat", "email", "address", "commission"},
  *     @OA\Property(
+ *         property="id",
+ *         type="integer",
+ *         format="int64",
+ *         description="The unique identifier of the partner"
+ *     ),
+ *     @OA\Property(
  *         property="name",
  *         type="string",
  *         description="Full name of the partner"

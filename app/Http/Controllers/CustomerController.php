@@ -146,7 +146,7 @@ class CustomerController extends Controller
      *              @OA\Property(
      *                  property="data",
      *                  type="array",
-     *                  @OA\JsonContent(
+     *                  @OA\Items(
      *                      @OA\Property(
      *                          property="name",
      *                          type="string",
@@ -180,7 +180,7 @@ class CustomerController extends Controller
      *      ),
      *      @OA\Response(
      *          response=422,
-     *          description="Bad request",
+     *          description="Validation error",
      *          @OA\JsonContent(
      *              type="object",
      *              @OA\Property(
