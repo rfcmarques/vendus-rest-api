@@ -19,7 +19,7 @@ To install the API, follow these steps:
 1. Clone the repository:
 
 ``` bash
-git clone https://github.com/rfcmarques/vendus-res-api.git
+git clone https://github.com/rfcmarques/vendus-rest-api.git
 ```
 
 2. Navigate to the project directory:
