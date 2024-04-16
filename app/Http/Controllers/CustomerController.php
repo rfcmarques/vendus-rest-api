@@ -19,28 +19,28 @@ class CustomerController extends Controller
      *      summary="Get list of customers",
      *      description="Returns a paginated list of customers with optional filtering based on various parameters.",
      *      @OA\Parameter(
-     *          name="name",
+     *          name="filter[name]",
      *          in="query",
      *          description="Filter by customer name",
      *          required=false,
      *          @OA\Schema(type="string")
      *      ),
      *      @OA\Parameter(
-     *          name="email",
+     *          name="filter[email]",
      *          in="query",
      *          description="Filter by exact customer email",
      *          required=false,
      *          @OA\Schema(type="string")
      *      ),
      *      @OA\Parameter(
-     *          name="partner_id",
+     *          name="filter[partner_id]",
      *          in="query",
      *          description="Filter by exact partner ID associated with the customer",
      *          required=false,
      *          @OA\Schema(type="integer")
      *      ),
      *      @OA\Parameter(
-     *          name="discount",
+     *          name="filter[discount9",
      *          in="query",
      *          description="Filter by discount rate",
      *          required=false,

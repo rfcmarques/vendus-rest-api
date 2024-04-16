@@ -19,21 +19,21 @@ class PartnerController extends Controller
      *      summary="Get list of partners",
      *      description="Returns a paginated list of partners with optional filtering based on various parameters.",
      *      @OA\Parameter(
-     *          name="name",
+     *          name="filter[name]",
      *          in="query",
      *          description="Filter by partner name",
      *          required=false,
      *          @OA\Schema(type="string")
      *      ),
      *      @OA\Parameter(
-     *          name="email",
+     *          name="filter[email]",
      *          in="query",
      *          description="Filter by exact partner email",
      *          required=false,
      *          @OA\Schema(type="string")
      *      ),
      *      @OA\Parameter(
-     *          name="commission",
+     *          name="filter[commission]",
      *          in="query",
      *          description="Filter by commission rate",
      *          required=false,

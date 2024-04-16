@@ -20,7 +20,7 @@ class SupplierController extends Controller
      *      summary="Get list of suppliers",
      *      description="Returns paginated list of suppliers with navigation links.",
      *      @OA\Parameter(
-     *          name="name",
+     *          name="filter[name]",
      *          in="query",
      *          description="Filter suppliers by name",
      *          required=false,
@@ -29,7 +29,7 @@ class SupplierController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="email",
+     *          name="filter[email]",
      *          in="query",
      *          description="Filter suppliers by exact email",
      *          required=false,
@@ -38,7 +38,7 @@ class SupplierController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="max_due_days",
+     *          name="filter[max_due_days]",
      *          in="query",
      *          description="Filter suppliers by maximum due days",
      *          required=false,
@@ -47,7 +47,7 @@ class SupplierController extends Controller
      *          )
      *      ),
      *      @OA\Parameter(
-     *          name="contract_file",
+     *          name="filter[contract_file]",
      *          in="query",
      *          description="Filter suppliers by contract file presence",
      *          required=false,

@@ -15,7 +15,7 @@
                 "operationId": "getCustomers",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filter[name]",
                         "in": "query",
                         "description": "Filter by customer name",
                         "required": false,
@@ -24,7 +24,7 @@
                         }
                     },
                     {
-                        "name": "email",
+                        "name": "filter[email]",
                         "in": "query",
                         "description": "Filter by exact customer email",
                         "required": false,
@@ -33,7 +33,7 @@
                         }
                     },
                     {
-                        "name": "partner_id",
+                        "name": "filter[partner_id]",
                         "in": "query",
                         "description": "Filter by exact partner ID associated with the customer",
                         "required": false,
@@ -42,7 +42,7 @@
                         }
                     },
                     {
-                        "name": "discount",
+                        "name": "filter[discount9",
                         "in": "query",
                         "description": "Filter by discount rate",
                         "required": false,
@@ -485,7 +485,7 @@
                 "operationId": "getPartners",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filter[name]",
                         "in": "query",
                         "description": "Filter by partner name",
                         "required": false,
@@ -494,7 +494,7 @@
                         }
                     },
                     {
-                        "name": "email",
+                        "name": "filter[email]",
                         "in": "query",
                         "description": "Filter by exact partner email",
                         "required": false,
@@ -503,7 +503,7 @@
                         }
                     },
                     {
-                        "name": "commission",
+                        "name": "filter[commission]",
                         "in": "query",
                         "description": "Filter by commission rate",
                         "required": false,
@@ -885,7 +885,7 @@
                 "operationId": "getSuppliers",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "filter[name]",
                         "in": "query",
                         "description": "Filter suppliers by name",
                         "required": false,
@@ -894,7 +894,7 @@
                         }
                     },
                     {
-                        "name": "email",
+                        "name": "filter[email]",
                         "in": "query",
                         "description": "Filter suppliers by exact email",
                         "required": false,
@@ -903,7 +903,7 @@
                         }
                     },
                     {
-                        "name": "max_due_days",
+                        "name": "filter[max_due_days]",
                         "in": "query",
                         "description": "Filter suppliers by maximum due days",
                         "required": false,
@@ -912,7 +912,7 @@
                         }
                     },
                     {
-                        "name": "contract_file",
+                        "name": "filter[contract_file]",
                         "in": "query",
                         "description": "Filter suppliers by contract file presence",
                         "required": false,
